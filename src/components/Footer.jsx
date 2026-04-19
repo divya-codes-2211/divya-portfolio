@@ -21,10 +21,10 @@ const Footer = () => {
           &copy; 2024 • Commerce & Analytics Portfolio • LPCPS Lucknow
         </div>
         <div className="flex justify-center gap-8">
-          <motion.a whileHover={{ y: -5 }} href="#" className="text-zinc-400 hover:text-purple-600 transition-colors">
+          <motion.a whileHover={{ y: -5 }} href="https://github.com/divya-codes-2211" className="text-zinc-400 hover:text-purple-600 transition-colors">
             <GithubIcon />
           </motion.a>
-          <motion.a whileHover={{ y: -5 }} href="#" className="text-zinc-400 hover:text-purple-600 transition-colors">
+          <motion.a whileHover={{ y: -5 }} href="www.linkedin.com/in/divyanjali-tiwari-30b59a369" className="text-zinc-400 hover:text-purple-600 transition-colors">
             <LinkedinIcon />
           </motion.a>
         </div>

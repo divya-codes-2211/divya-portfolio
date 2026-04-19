@@ -126,14 +126,14 @@ const Hero = () => {
             <div className="flex gap-4 w-full sm:w-auto justify-center">
               <motion.a 
                 whileHover={{ y: -5, color: "#9333ea" }}
-                href="#" 
+                href="https://github.com/divya-codes-2211" 
                 className="p-4 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 transition-colors"
               >
                 <GithubIcon />
               </motion.a>
               <motion.a 
                 whileHover={{ y: -5, color: "#9333ea" }}
-                href="#" 
+                href="www.linkedin.com/in/divyanjali-tiwari-30b59a369" 
                 className="p-4 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 transition-colors"
               >
                 <LinkedinIcon />
