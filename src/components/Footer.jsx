@@ -14,7 +14,8 @@ const Footer = () => {
     <footer className="py-20 px-6 border-t border-zinc-100 dark:border-zinc-900 text-center bg-zinc-50/30 dark:bg-transparent">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-2xl font-bold tracking-tighter text-zinc-900 dark:text-white">
-          DIVYANJALI<span className="text-purple-600">.</span>T
+          <span className="md:hidden">DT<span className="text-purple-600">.</span></span>
+          <span className="hidden md:inline">DIVYANJALI<span className="text-purple-600">.</span>T</span>
         </div>
         <div className="text-zinc-400 text-sm font-medium">
           &copy; 2024 • Commerce & Analytics Portfolio • LPCPS Lucknow

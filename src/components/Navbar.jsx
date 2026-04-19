@@ -16,22 +16,23 @@ const Navbar = ({ isDark, setIsDark }) => {
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`pointer-events-auto flex items-center gap-8 px-6 py-3 rounded-2xl border transition-all duration-500 ${
+        className={`pointer-events-auto flex items-center gap-3 md:gap-8 px-4 md:px-6 py-2 md:py-3 rounded-2xl border transition-all duration-500 ${
           scrolled 
           ? "bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border-zinc-200/50 dark:border-zinc-800/50 shadow-2xl shadow-purple-500/5 scale-95" 
           : "bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border-transparent"
         }`}
       >
         {/* Compact Logo */}
-        <div className="text-lg font-bold tracking-tighter text-zinc-900 dark:text-white">
-          DIVYANJALI
+        <div className="text-sm md:text-lg font-bold tracking-tighter text-zinc-900 dark:text-white">
+          <span className="md:hidden">DT</span>
+          <span className="hidden md:inline">DIVYANJALI</span>
         </div>
 
         {/* Divider */}
         <div className="w-[1px] h-4 bg-zinc-200 dark:bg-zinc-800" />
 
         {/* Centered Links */}
-        <div className="flex gap-6 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+        <div className="flex gap-3 md:gap-6 text-xs md:text-sm font-semibold text-zinc-500 dark:text-zinc-400">
           {['about', 'projects', 'education', 'contact'].map((item) => (
             <a 
               key={item} 

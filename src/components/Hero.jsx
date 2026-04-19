@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, X } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -25,8 +26,59 @@ const LinkedinIcon = () => (
 );
 
 const Hero = () => {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
-    <header id="about" className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto overflow-hidden">
+    <>
+      <AnimatePresence>
+        {isResumeOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-zinc-950/80 backdrop-blur-sm"
+            onClick={() => setIsResumeOpen(false)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-4xl h-[85vh] bg-zinc-50 dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl flex flex-col"
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="flex justify-between items-center p-4 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50">
+                <h3 className="text-zinc-900 dark:text-white font-bold text-lg">Divyanjali_Resume.pdf</h3>
+                <div className="flex items-center gap-3">
+                  <a 
+                    href="/resume.pdf"
+                    download="Divyanjali_Resume.pdf"
+                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-xl transition-colors cursor-pointer"
+                  >
+                    <Download size={16} /> Download
+                  </a>
+                  <button 
+                    onClick={() => setIsResumeOpen(false)}
+                    className="p-2 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-xl transition-colors cursor-pointer"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+              </div>
+              {/* Modal Body */}
+              <div className="flex-1 w-full bg-zinc-100 dark:bg-zinc-800/50">
+                <iframe 
+                  src="/resume.pdf" 
+                  className="w-full h-full border-none"
+                  title="Resume Viewer"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <header id="about" className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto overflow-hidden">
       <div className="flex flex-col lg:flex-row gap-16 items-center">
         
         {/* Hero Content */}
@@ -52,15 +104,26 @@ const Hero = () => {
           </motion.p>
 
           <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center lg:justify-start">
-            <motion.a 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#contact" 
-              className="px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-2xl font-bold shadow-xl shadow-purple-500/10"
-            >
-              Start a Collaboration
-            </motion.a>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <motion.a 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#contact" 
+                className="w-full sm:w-auto text-center px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-2xl font-bold shadow-xl shadow-purple-500/10"
+              >
+                Start a Collaboration
+              </motion.a>
+              <motion.button 
+                onClick={() => setIsResumeOpen(true)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto justify-center px-8 py-4 bg-transparent text-zinc-900 dark:text-white border-2 border-zinc-200 dark:border-zinc-800 hover:border-purple-500 dark:hover:border-purple-500 rounded-2xl font-bold flex items-center gap-2 transition-colors cursor-pointer"
+              >
+                <Download size={20} />
+                Resume
+              </motion.button>
+            </div>
+            <div className="flex gap-4 w-full sm:w-auto justify-center">
               <motion.a 
                 whileHover={{ y: -5, color: "#9333ea" }}
                 href="#" 
@@ -96,7 +159,7 @@ const Hero = () => {
             <img 
               src="https://ik.imagekit.io/gwv0quzrfq/pfp.png?updatedAt=1775108297446" 
               alt="Divyanjali Tiwari"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
+              className="w-full h-full object-cover grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-700 scale-110 hover:scale-100 active:scale-100"
             />
             <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
               <div className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-1 opacity-70 text-center">Lucknow, India</div>
@@ -104,7 +167,8 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-    </header>
+      </header>
+    </>
   );
 };
 
