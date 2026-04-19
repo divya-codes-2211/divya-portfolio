@@ -133,7 +133,7 @@ const Hero = () => {
               </motion.a>
               <motion.a 
                 whileHover={{ y: -5, color: "#9333ea" }}
-                href="www.linkedin.com/in/divyanjali-tiwari-30b59a369" 
+                href="https://www.linkedin.com/in/divyanjali-tiwari-30b59a369" 
                 className="p-4 rounded-2xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 transition-colors"
               >
                 <LinkedinIcon />
